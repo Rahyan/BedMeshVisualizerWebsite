@@ -1,0 +1,39 @@
+.blog-editor-main .editor-body-label { margin-bottom: 10px; }
+.blog-editor-form #article-excerpt { height: 110px; min-height: 90px; white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; }
+.editor-body .blog-code-input { height: 480px; min-height: 280px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.editor-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0 0 10px;
+}
+.editor-tools button {
+    min-height: 32px;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 11px;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+.editor-tools button:hover { border-color: #a6b3e8; color: var(--primary-dark); background: #f7f9ff; }
+.editor-tools [data-format="bold"] { font-weight: 600; }
+.editor-tools [data-format="italic"] { font-style: italic; }
+.editor-tools [data-format="code"] { font-family: Consolas, monospace; }
+.editor-tools button:last-child:not([data-format]) { border-color: transparent; color: var(--primary-dark); }
+.editor-save-state { color: var(--muted); font-size: 11px; margin: 8px 0 0; }
+.editor-save-state.is-dirty { color: var(--primary-dark); }
+.editor-link-panel { display: flex; flex-wrap: wrap; align-items: end; gap: 8px; padding: 14px; margin-bottom: 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+.editor-link-panel > label { flex: 1 1 220px; margin: 0; font-size: 11px; }
+.editor-link-panel input { display: block; width: 100%; min-height: 36px; margin-top: 5px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--ink); }
+.editor-link-message { flex-basis: 100%; color: #ad394a; font-size: 11px; margin: 0; }
+.editor-link-message:empty { display: none; }
+.editor-recovery { grid-column: 1 / -1; padding: 15px 18px; border: 1px solid #cbd5f7; border-radius: 5px; background: #f5f7ff; }
+.editor-recovery > p { margin: 0; font-size: 12px; line-height: 1.8; }
+.editor-recovery > div { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+@media (max-width: 680px) { .editor-body .blog-code-input { height: 360px; } }
+@media (pointer: coarse) and (max-width: 760px) {
+    .blog-editor-form input:not([type=file]), .blog-editor-form textarea,
+    .blog-editor-form select, .editor-link-panel input { font-size: 16px !important; }
+}

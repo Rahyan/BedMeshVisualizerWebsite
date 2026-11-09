@@ -1,0 +1,24 @@
+Options -Indexes
+
+# These access rules are required. A host missing mod_rewrite must fail closed.
+RewriteEngine On
+RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L,NC]
+RewriteRule ^(?:php|tests|docs|scripts)(?:/|$) - [F,L,NC]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+<FilesMatch "(?i)(?:^(?:README\.md|AGENTS\.md|router\.php|test\.html|\..*)$|\.(?:sql|sqlite3?|db|log|bak|old|orig|save|pem|key|p12|pfx)$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+    AddType text/javascript .js .mjs
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # Revalidate native module imports as well as versioned entry assets.
+    <FilesMatch "\.(?:css|js|mjs)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>

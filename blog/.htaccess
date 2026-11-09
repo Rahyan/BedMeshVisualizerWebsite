@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "(?i)^(?:\.env(?:\..*)?|README\.md)$">
+    Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^$ public/ [R=302,L]
+RewriteRule ^(?:tests|database|app)(?:/|$) - [F,L,NC]

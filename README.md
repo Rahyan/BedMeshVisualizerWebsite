@@ -1,43 +1,37 @@
-# Bed Mesh (Visualizer) v1.0.5
-Visualize your 3D Printer Bed from Marlin's G29 command output (as well as Prusa's G81 command). Helps for Bed Levelling.
+# Bed Mesh
 
-Can be found at https://bedmesh.com
+I made Bed Mesh to see what the numbers from my 3D printer actually looked like. Paste a mesh at [bedmesh.com](https://bedmesh.com/), and you can see where the bed is high or low on a heatmap or a 3D plot.
 
-## Features
-This is still a "beta" project, meaning that this section will get to be updated over new releases. So as of now (April 1st - v1.0.5), there are the following features :
+If you’ve just adjusted the bed or swapped a plate, put the two scans side by side. The difference heatmap shows what changed at each point. If the printer gives you a slightly different mesh every time, you can compare a few runs from before the adjustment to see how much the readings normally move.
 
-- Convert command output/result to plot ;
-- Settings section, still empty yet ;
-- Stats section, with average/standard derivation, min/max values as well as the difference of both. Plus the avergage values ;
-- Versatile and efficient management - you can add panels at your leisure, and display whatever you want with each of them.
-- Easter egg when the bed is properly leveled.
-- Values storage - your data (the outputs you've visualized) are saved locally, in your computer using the `Web Storage API` (https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API). Will probably add an option to save it in a database.
+Open the [visualizer](https://bedmesh.com/#visualizer) and hit **Try example** to see a mesh, or open the [calibration walkthrough](https://bedmesh.com/?demo=comparison) to see what changed between scans.
 
-## Potential Features
+![Bed Mesh showing how the height changed between two simulated scans](assets/articles/mesh-difference.png)
 
-- Blog through a PHP homemade CMS ;
-- Forum ;
-- Contact form (for support and suggestions, as well as issues reporting (though there's GitHub for that) ;
-- Required degrees of rotation on the screws to level the bed perfectly ;
-- Expression in other units, I'll probably release a variety of these and find out if they're useful or not.
-- Analytics (+ setting to disable it) - the visualized values are saved to see if the plot was properly rendered or not. If there's an error. The user will be able to report it too.
-- Illustration on where to level the bed. Thinking of a heatmap.
-- Some AI stuff maybe ?
+## Get a mesh from your printer
 
-## How can you help ?
+Bed Mesh reads Marlin `G29` reports, Klipper Z matrices, and `G81` output from supported Prusa firmware. You can also paste a grid of numbers or import a text, CSV, or JSON file. If your console log has several scans in it, use **Scan a printer log** to pick the one you want. The [firmware guide](https://bedmesh.com/guides/?topic=getting-mesh-data#firmware-output) shows where to find the output for each firmware.
 
-If there are any issues. Feel free to report it on the Bed Mesh website or on GitHub.
+The visualizer runs in your browser and saves your workspace there. You can download the original values as CSV, save a chart as PNG, or export a comparison report with both scans and the cross-sections. If you want to move to another browser, download a workspace or history backup first.
 
-There's also that nice link : https://paypal.me/rsaouab
+Usage analytics on bedmesh.com starts only if you opt in. Mesh values, notes, and filenames stay in your browser.
 
-In case you want to support the developement of this tool - obviously - and it will be greatly appreciated.
+## Run it locally
 
-## Support
+You’ll need PHP 8.1 or newer and a browser. There’s no build step or database setup for the visualizer and guides.
 
-lmao
+```sh
+php scripts/serve.php
+```
 
-Just kidding. You can hit me up on GitHub or on the Bed Mesh website (https://bedmesh.com). I'll leave some contact information. There's also a contact form if you don't want the hassle of typing an email etc...
+Open [http://127.0.0.1:8765](http://127.0.0.1:8765). The [journal](blog/README.md) has a separate MySQL setup. If you’re hosting a copy, see the [deployment notes](docs/DEPLOYMENT.md).
 
-## Can I run it locally
+To run the same checks as GitHub Actions, you’ll also need Git, Node.js 18+, and Python 3.
 
-Yes. Will write tutorials on how to.
+```sh
+php scripts/check-release.php
+```
+
+## Found a bug?
+
+[Open an issue](https://github.com/Rahyan/BedMeshVisualizerWebsite/issues/new) and include your printer model, firmware version, and a few lines of the mesh that reproduce it. A small excerpt is usually enough. Leave out anything from the log you’d rather keep private.

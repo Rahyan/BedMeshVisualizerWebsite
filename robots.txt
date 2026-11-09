@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /blog/public/admin
+Disallow: /blog/public/login
+Disallow: /blog/public/logout
+Disallow: /blog/public/signup
+Disallow: /blog/public/preview
+Disallow: /blog/public/search
+
+Sitemap: https://bedmesh.com/sitemap.xml

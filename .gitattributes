@@ -1,0 +1,18 @@
+* text=auto
+*.php text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.sql text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+.htaccess text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.env.example text eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

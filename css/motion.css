@@ -1,0 +1,92 @@
+/* Motion is a progressive detail: the page is fully visible without this file or JS. */
+:root {
+    --motion-ease: cubic-bezier(.22, 1, .36, 1);
+    --motion-short: 160ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Native details keep their semantics and their natural content height. */
+    @supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+        details { interpolate-size: allow-keywords; }
+        details::details-content {
+            height: 0;
+            opacity: .55;
+            overflow: clip;
+            transition: height 240ms var(--motion-ease), opacity 200ms ease,
+                content-visibility 240ms allow-discrete;
+        }
+        details[open]::details-content { height: auto; opacity: 1; }
+    }
+
+    .site-brand img { transition: transform 300ms var(--motion-ease); }
+    .site-brand:hover img { transform: translateY(-1px) rotate(-3deg); }
+    .text-button, .editor-tools button, .site-footer a,
+    .guide-toc a, .blog-article-toc a, .blog-breadcrumbs a,
+    .guide-breadcrumbs a, .guide-next-reading a {
+        transition: color var(--motion-short) ease, background-color var(--motion-short) ease,
+            border-color var(--motion-short) ease, box-shadow 200ms ease;
+    }
+    .site-footer a > span[aria-hidden], .guide-list-arrow, .guide-next-reading a > span {
+        display: inline-block;
+        transition: transform 220ms var(--motion-ease);
+    }
+    .site-footer a:hover > span[aria-hidden] { transform: translate(2px, -2px); }
+    .guide-next-reading a:hover > span, .guides-list > li:hover .guide-list-arrow {
+        transform: translateX(4px);
+    }
+    .guides-list > li, .blog-list-item {
+        transition: border-color 200ms ease;
+    }
+    .guides-list > li:hover, .blog-list-item:hover { border-bottom-color: #aebcf3; }
+    .guide-list-number { transition: color 200ms ease; }
+    .guides-list > li:hover .guide-list-number { color: var(--primary); }
+    .guide-toc a, .blog-article-toc a {
+        transition: color 160ms ease, background-color 200ms ease, border-color 200ms ease;
+    }
+    .blog-list-image { overflow: hidden; }
+    .blog-list-image img { transition: transform 450ms var(--motion-ease); }
+    .blog-list-image:hover img { transform: scale(1.025); }
+    .text-button:active:not(:disabled), .editor-tools button:active { transform: translateY(1px); }
+    .view-switch button[aria-pressed=true] { box-shadow: 0 1px 4px #354cda16; }
+    .settings-grid label, .measurement-fields label, .blog-editor-form label {
+        transition: color var(--motion-short) ease;
+    }
+    .settings-grid label:focus-within, .measurement-fields label:focus-within,
+    .blog-editor-form label:focus-within { color: var(--primary-dark); }
+    .table-scroll tbody tr { transition: background-color 140ms ease; }
+    .table-scroll tbody tr:hover { background: #536dfe07; }
+    .editor-link-panel:not([hidden]), .editor-recovery:not([hidden]) {
+        animation: detail-enter 220ms var(--motion-ease);
+    }
+    /* Discrete display transitions preserve hidden/inert keyboard behaviour. */
+    @supports (transition-behavior: allow-discrete) {
+        .site-header .site-projects__list {
+            animation: none;
+            transition: opacity 160ms ease, translate 200ms var(--motion-ease), display 200ms allow-discrete;
+            opacity: 1;
+            translate: 0 0;
+        }
+        .site-header .site-projects__list[hidden] { opacity: 0; translate: 0 -5px; }
+        @starting-style {
+            .site-header .site-projects__list:not([hidden]) { opacity: 0; translate: 0 -5px; }
+        }
+    }
+    @media (max-width: 720px) {
+        @supports (interpolate-size: allow-keywords) and (transition-behavior: allow-discrete) {
+            .site-header .site-nav {
+                interpolate-size: allow-keywords;
+                height: auto;
+                opacity: 1;
+                overflow: clip;
+                transition: height 240ms var(--motion-ease), padding-block 240ms var(--motion-ease), opacity 160ms ease, display 240ms allow-discrete;
+            }
+            .site-header .site-nav[hidden] { height: 0; padding-block: 0; opacity: 0; }
+            @starting-style { .site-header .site-nav:not([hidden]) { height: 0; padding-block: 0; opacity: 0; } }
+        }
+    }
+}
+
+@keyframes detail-enter {
+    from { opacity: .4; transform: translateY(-3px); }
+    to { opacity: 1; transform: translateY(0); }
+}

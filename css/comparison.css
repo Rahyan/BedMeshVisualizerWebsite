@@ -1,0 +1,234 @@
+.difference {
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid var(--line, #e1e5ed);
+    border-radius: var(--radius, 6px);
+    background: #fff;
+}
+
+.difference .difference-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.difference .difference-heading h3 {
+    margin: 0 0 5px;
+    color: var(--ink, #263047);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.difference .difference-heading p,
+.difference .difference-alignment,
+.difference .difference-summary-note {
+    margin: 0;
+    color: var(--muted, #6f7786);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.difference .difference-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 16px;
+}
+
+.difference .difference-controls label {
+    color: var(--muted, #6f7786);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.difference .difference-controls select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    margin-top: 6px;
+    padding: 7px 10px;
+    border: 1px solid var(--line, #e1e5ed);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink, #263047);
+    font: inherit;
+}
+
+.difference .difference-alignment {
+    margin-top: 14px;
+}
+
+.difference .difference-message {
+    margin: 12px 0 0;
+    color: var(--primary-dark, #4258cb);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.difference .difference-message:empty {
+    margin: 0;
+}
+
+.difference .difference-message.is-error {
+    padding: 9px 12px;
+    border-left: 2px solid #d78691;
+    background: #fff5f6;
+    color: #ad394a;
+}
+
+.difference .difference-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin: 22px 0 12px;
+    padding-top: 19px;
+    border-top: 1px solid var(--line, #e1e5ed);
+}
+
+.difference .difference-summary dt {
+    margin-bottom: 6px;
+    color: var(--muted, #6f7786);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.difference .difference-summary dd {
+    margin: 0;
+    color: var(--ink, #263047);
+    font-size: 21px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.4px;
+}
+
+.difference .difference-summary-note {
+    margin-bottom: 12px;
+}
+
+.difference .difference-help { margin-bottom: 20px; font-size: 11px; }
+.difference .difference-help summary { color: var(--primary-dark); cursor: pointer; width: fit-content; }
+.difference .difference-help p { max-width: 880px; color: var(--muted); line-height: 1.85; margin: 10px 0 0; }
+
+.difference .difference-plot-wrap {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid var(--line, #e1e5ed);
+    border-radius: 4px;
+}
+
+.difference .difference-graph {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+}
+
+.difference .difference-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: #fff;
+    color: var(--muted, #6f7786);
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: center;
+    pointer-events: none;
+}
+
+.difference .difference-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 20px;
+    margin-top: 10px;
+}
+
+.difference .difference-actions > span {
+    color: var(--muted, #6f7786);
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.difference .difference-actions > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+}
+
+.difference .difference-values {
+    margin-top: 18px;
+    padding-top: 13px;
+    border-top: 1px solid var(--line, #e1e5ed);
+}
+
+.difference .difference-values summary {
+    width: fit-content;
+    color: var(--primary-dark, #4258cb);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.difference .difference-values .table-scroll {
+    max-height: 280px;
+    margin-top: 12px;
+}
+
+.difference .difference-values table {
+    min-width: 0;
+    font-family: Consolas, monospace;
+    font-size: 11px;
+}
+
+.difference .difference-values th,
+.difference .difference-values td {
+    padding: 7px 10px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+    .difference {
+        margin-top: 22px;
+        padding: 18px;
+    }
+
+    .difference .difference-controls {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .difference .difference-controls label:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .difference .difference-summary {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .difference .difference-plot-wrap {
+        height: 340px;
+    }
+}
+
+@media (max-width: 420px) {
+    .difference .difference-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .difference .difference-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .difference .difference-controls label:last-child {
+        grid-column: auto;
+    }
+}

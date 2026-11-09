@@ -1,0 +1,40 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+.aws/
+.codex/
+.agents/
+AGENTS.md
+
+# Search Console ownership proof belongs to the host.
+/google*.html
+
+# Databases and runtime data (the legacy dump contains user records)
+*.sql
+!blog/database/schema.sql
+*.sqlite
+*.sqlite3
+*.db
+**/uploads/
+*.log
+
+# Tooling and local previews
+node_modules/
+vendor/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+coverage/
+tmp/
+output/
+.work/
+test.html
